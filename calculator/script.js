@@ -1,58 +1,26 @@
 let displayValue = "";
-let currentOperation = null;
-let firstOperand = null;
-let shouldResetDisplay = false;
 
 function appendNumber(number) {
-  if (displayValue === "0" || shouldResetDisplay) {
-    displayValue = number;
-    shouldResetDisplay = false;
-  } else {
-    displayValue += number;
-  }
+  displayValue += number;
   updateDisplay();
 }
 
-function chooseOperation(operation) {
-  if (currentOperation !== null) calculate();
-  firstOperand = parseFloat(displayValue);
-  currentOperation = operation;
-  shouldResetDisplay = true;
+function appendOperation(operation) {
+  displayValue += ` ${operation} `;
+  updateDisplay();
 }
 
 function calculate() {
-  if (currentOperation === null) return;
-  const secondOperand = parseFloat(displayValue);
-  if (isNaN(firstOperand) || isNaN(secondOperand)) return;
-
-  let result;
-  switch (currentOperation) {
-    case "+":
-      result = firstOperand + secondOperand;
-      break;
-    case "-":
-      result = firstOperand - secondOperand;
-      break;
-    case "*":
-      result = firstOperand * secondOperand;
-      break;
-    case "/":
-      result = firstOperand / secondOperand;
-      break;
-    default:
-      return;
+  try {
+    displayValue = eval(displayValue).toString();
+  } catch (e) {
+    displayValue = "Error";
   }
-  displayValue = result.toString();
-  currentOperation = null;
-  firstOperand = null;
   updateDisplay();
 }
 
 function clearDisplay() {
   displayValue = "";
-  currentOperation = null;
-  firstOperand = null;
-  shouldResetDisplay = false;
   updateDisplay();
 }
 
