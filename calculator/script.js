@@ -17,7 +17,6 @@ function chooseOperation(operation) {
   if (currentOperation !== null) calculate();
   firstOperand = parseFloat(displayValue);
   currentOperation = operation;
-  displayValue = operation;
   shouldResetDisplay = true;
 }
 
