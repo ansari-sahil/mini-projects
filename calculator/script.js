@@ -28,3 +28,5 @@ function updateDisplay() {
   const display = document.getElementById("display");
   display.value = displayValue;
 }
+
+console.log(((Math.random() * 10) / 2).toFixed(0));
