@@ -24,34 +24,43 @@ document.addEventListener("DOMContentLoaded", function () {
     if (user === computer) {
       return "draw";
     }
-    if (
-      (user === "rock" && computer === "scissors") ||
-      (user === "paper" && computer === "rock") ||
-      (user === "scissors" && computer === "paper")
-    ) {
-      return "win";
+
+    switch (user) {
+      case "rock":
+        return computer === "scissors" ? "win" : "lose";
+      case "paper":
+        return computer === "rock" ? "win" : "lose";
+      case "scissors":
+        return computer === "paper" ? "win" : "lose";
     }
-    return "lose";
   }
 
   function updateScore(result) {
-    if (result === "win") {
-      userScore++;
-    } else if (result === "lose") {
-      computerScore++;
+    switch (result) {
+      case "win":
+        userScore++;
+        break;
+      case "lose":
+        computerScore++;
+        break;
+      // 'draw' case does not affect the score
     }
   }
 
   function displayResult(result, userChoice, computerChoice) {
-    if (result === "win") {
-      resultText.textContent = `You win! ${userChoice} beats ${computerChoice}.`;
-      resultText.className = "text-green-500";
-    } else if (result === "lose") {
-      resultText.textContent = `You lose! ${computerChoice} beats ${userChoice}.`;
-      resultText.className = "text-red-500";
-    } else {
-      resultText.textContent = `It's a draw! You both chose ${userChoice}.`;
-      resultText.className = "text-gray-500";
+    switch (result) {
+      case "win":
+        resultText.textContent = `You win! ${userChoice} beats ${computerChoice}.`;
+        resultText.className = "text-green-500";
+        break;
+      case "lose":
+        resultText.textContent = `You lose! ${computerChoice} beats ${userChoice}.`;
+        resultText.className = "text-red-500";
+        break;
+      case "draw":
+        resultText.textContent = `It's a draw! You both chose ${userChoice}.`;
+        resultText.className = "text-gray-500";
+        break;
     }
   }
 
