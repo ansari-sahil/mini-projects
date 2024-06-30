@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const buttons = document.querySelectorAll("button");
   const resultText = document.getElementById("result");
   const scoreText = document.getElementById("score");
+  const resetScore = document.getElementById("reset");
 
   let userScore = 0;
   let computerScore = 0;
@@ -24,7 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (user === computer) {
       return "draw";
     }
-
+    else if (user === 'reset'){
+      return "reset";
+    }
     switch (user) {
       case "rock":
         return computer === "scissors" ? "win" : "lose";
@@ -32,6 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
         return computer === "rock" ? "win" : "lose";
       case "scissors":
         return computer === "paper" ? "win" : "lose";
+      case "reset":
+        return "reset"
     }
   }
 
@@ -43,7 +48,10 @@ document.addEventListener("DOMContentLoaded", function () {
       case "lose":
         computerScore++;
         break;
-      // 'draw' case does not affect the score
+      case "reset":
+        userScore = 0;
+        computerScore = 0;
+        break;
     }
   }
 
@@ -59,6 +67,10 @@ document.addEventListener("DOMContentLoaded", function () {
         break;
       case "draw":
         resultText.textContent = `It's a draw! You both chose ${userChoice}.`;
+        resultText.className = "text-gray-500";
+        break;
+      case "reset":
+        resultText.textContent = "Game Reset!";
         resultText.className = "text-gray-500";
         break;
     }
