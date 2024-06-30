@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const buttons = document.querySelectorAll("button");
   const resultText = document.getElementById("result");
   const scoreText = document.getElementById("score");
-  const resetScore = document.getElementById("reset");
 
   let userScore = 0;
   let computerScore = 0;
