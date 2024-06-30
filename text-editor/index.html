@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rich Text Editor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="editor">
+    <div class="toolbar">
+      <button onclick="execCmd('bold')"><b>B</b></button>
+      <button onclick="execCmd('italic')"><i>I</i></button>
+      <button onclick="execCmd('underline')"><u>U</u></button>
+      <button onclick="execCmd('justifyLeft')"><span class="icon-align-left"></span></button>
+      <button onclick="execCmd('justifyCenter')"><span class="icon-align-center"></span></button>
+      <button onclick="execCmd('justifyRight')"><span class="icon-align-right"></span></button>
+    </div>
+    <div class="editable" contenteditable="true" id="editor"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
