@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const appId = `44ffb030`;
+const appId = `44ffb030`;
 const appKey = `cc4a95efa787c69cb02f7c4ab23e82c9`;
 const query = ``;
 
