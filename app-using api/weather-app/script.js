@@ -23,5 +23,4 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Error fetching weather data, please try again later.');
           });
       });
-      
-    });
+});

@@ -55,4 +55,4 @@ const searchRecipe = async()=>{
 }
 
 button.addEventListener('click', searchRecipe)
-})
+});

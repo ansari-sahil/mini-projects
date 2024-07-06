@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded",() => {
-    
 var map = L.map('map').setView([28.70, 77.10], 1);
 
 var customIcon = L.icon({
