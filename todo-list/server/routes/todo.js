@@ -55,7 +55,6 @@ router.patch("/:id", isAuthorised, async (req, res) => {
     const { id: todoId } = req.params;
     const { title, complete } = req.body;
 
-    // Check if todo exists
     const todo = await Todo.findOne({ _id: todoId });
     if (!todo) {
       return res.status(404).json({
@@ -64,7 +63,6 @@ router.patch("/:id", isAuthorised, async (req, res) => {
       });
     }
 
-    // Check if todo belongs to the user
     if (todo.userId.toString() !== user.id) {
       return res.status(401).json({
         message: "Unauthorized",
@@ -72,7 +70,6 @@ router.patch("/:id", isAuthorised, async (req, res) => {
       });
     }
 
-    // Update the todo
     if (title !== undefined) {
       todo.title = title;
     }
@@ -99,7 +96,6 @@ router.delete("/:id", isAuthorised, async (req, res) => {
     const { user } = req;
     const { id: todoId } = req.params;
 
-    // Check if todo exists
     const todo = await Todo.findOne({ _id: todoId });
     if (!todo) {
       return res.status(404).json({
@@ -108,7 +104,6 @@ router.delete("/:id", isAuthorised, async (req, res) => {
       });
     }
 
-    // Check if todo belongs to the user
     if (todo.userId.toString() !== user.id) {
       return res.status(401).json({
         message: "Unauthorized",
@@ -116,7 +111,6 @@ router.delete("/:id", isAuthorised, async (req, res) => {
       });
     }
 
-    // Delete the todo
     await Todo.findOneAndDelete({ _id: todoId });
     return res.json({
       message: "Todo deleted successfully",
