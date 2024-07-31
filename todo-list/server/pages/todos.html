@@ -75,21 +75,21 @@
     </div>
     <script>
       const token = localStorage.getItem("token");
-      console.log("Stored token:", token); // Debugging
+      console.log("Stored token:", token); 
 
       if (!token) {
         window.location.href = "/login";
       }
 
       const headers = {
-        Authorization: `Bearer ${token}`, // Updated
+        Authorization: `Bearer ${token}`,
       };
 
       const addTodoBtn = document.querySelector("button.add-todo");
       const input = document.querySelector("input.add-todo");
       const list = document.querySelector("#tasks");
 
-      let todos = []; // make todos globally accessible
+      let todos = []; 
 
       const logout = () => {
         localStorage.removeItem("token");
@@ -99,9 +99,9 @@
       const loadTodos = async () => {
         try {
           const response = await axios.get("/api/todos", { headers });
-          console.log("Response:", response); // Debugging
+          console.log("Response:", response);
           const { data } = response.data;
-          todos = data; // update global todos array
+          todos = data; 
           renderList(todos);
         } catch (error) {
           if (error.response && error.response.status === 401) {

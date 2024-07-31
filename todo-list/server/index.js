@@ -5,7 +5,7 @@ const pageRoutes = require("./routes/pages");
 const { connectDB } = require("./utils/db.utils");
 
 const PORT = 8080;
-// expres instance
+
 const app = express();
 
 connectDB();
