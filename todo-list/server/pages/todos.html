@@ -4,7 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Events in HTML</title>
+    <title>To-Do List</title>
+    <link
+      rel="shortcut icon"
+      href="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
+      type="image/x-icon"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
     <style>
@@ -75,7 +80,7 @@
     </div>
     <script>
       const token = localStorage.getItem("token");
-      console.log("Stored token:", token); 
+      console.log("Stored token:", token);
 
       if (!token) {
         window.location.href = "/login";
@@ -89,7 +94,7 @@
       const input = document.querySelector("input.add-todo");
       const list = document.querySelector("#tasks");
 
-      let todos = []; 
+      let todos = [];
 
       const logout = () => {
         localStorage.removeItem("token");
@@ -101,7 +106,7 @@
           const response = await axios.get("/api/todos", { headers });
           console.log("Response:", response);
           const { data } = response.data;
-          todos = data; 
+          todos = data;
           renderList(todos);
         } catch (error) {
           if (error.response && error.response.status === 401) {
