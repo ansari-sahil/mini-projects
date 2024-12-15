@@ -12,10 +12,10 @@ connectDB();
 
 app.use(express.json());
 
-app.use('/api/auth',authRoutes)
-app.use('/api/todos',todoRoutes)
+app.use("/api/auth", authRoutes);
+app.use("/api/todos", todoRoutes);
 
-app.use('/',pageRoutes)
+app.use("/", pageRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

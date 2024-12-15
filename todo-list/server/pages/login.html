@@ -91,7 +91,7 @@
     <script>
       const token = localStorage.getItem("token");
       if (token) {
-        window.location.href = "/";
+        window.location.href = "/"; // if token exists then redirect to home page
       }
 
       const form = document.querySelector("form");
@@ -108,13 +108,13 @@
           }
           const { token } = data;
           localStorage.setItem("token", token);
-          window.location.href = "/";
+          window.location.href = "/"; // reset location after successful login
         } catch (error) {
           console.log(error);
           window.alert(error.response.data.message);
         }
       };
-      form.addEventListener("submit", handleSubmit);
+      form.addEventListener("submit", handleSubmit); //adds an event listener to the form tag which is fired when the form is submitted
     </script>
   </body>
 </html>

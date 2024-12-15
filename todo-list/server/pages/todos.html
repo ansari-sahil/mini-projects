@@ -123,14 +123,14 @@
       let mode = "add",
         selectedId = null;
 
-      const generateTodo = ({ title, _id, completed }) =>
+      const generateTodo = ({ title, _id, complete }) =>
         `<div id="task" class="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4 border-l-transparent ${
-          completed ? "bg-gray-100" : "bg-white"
+          complete ? "bg-gray-100" : "bg-white"
         }">
           <div class="inline-flex items-center space-x-2">
             <div onClick="markAsComplete('${_id}')">
               ${
-                completed
+                complete
                   ? `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-green-500 hover:cursor-pointer">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
                 </svg>`
@@ -140,7 +140,7 @@
               }
             </div>
             <div onClick="handleEdit('${_id}')" class="${
-          completed ? "text-slate-500 line-through" : ""
+          complete ? "text-slate-500 line-through" : ""
         }">${title}</div>
           </div>
           <div onClick="handleDelete('${_id}')">
@@ -176,7 +176,7 @@
       const markAsComplete = async (id) => {
         try {
           const todo = todos.find((todo) => todo._id === id);
-          const updatedTodo = { ...todo, completed: !todo.completed };
+          const updatedTodo = { ...todo, complete: !todo.complete };
           await axios.patch(`/api/todos/${id}`, updatedTodo, { headers });
           todos = todos.map((todo) => (todo._id === id ? updatedTodo : todo));
           renderList(todos);
